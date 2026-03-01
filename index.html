@@ -1,186 +1,249 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoPilot UI | Vexilla AITS | Solomon Records LLC Media Group</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <meta name="description" content="ScribeBoard: The world's first Neural-Tactile Interface by vexillaAITS. Zero-keystroke security and AI-integrated voice flow.">
+    <title>ScribeBoard | The Future of Human-Machine Interface</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
+    
     <style>
-        :root { 
-            --vexilla-blue: #2563eb; 
-            --vexilla-gold: #fbbf24; 
-            --glow-gold: rgba(251, 191, 36, 0.8);
-            --glow-blue: rgba(37, 99, 235, 0.8);
+        :root {
+            --bg: #000000;
+            --accent: #008b8b; 
+            --text-main: #ffffff;
+            --text-dim: #a1a1a1;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+            --magic-white: rgba(255, 255, 255, 0.8);
         }
-        
-        body { background-color: #010409; color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; }
-        
-        /* 3x Larger Logo with Luminescent Gold Glow */
-        .logo-main { 
-            height: 8rem; /* 3x increase */
+
+        * { box-sizing: border-box; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0,0,0,0.9);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        /* LOGO: 4X Larger + Magical White Glow on Hover */
+        .logo-container img {
+            height: 180px; /* Scaled 4x for massive visibility */
             width: auto;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: block;
             cursor: pointer;
         }
-        .logo-main:hover {
-            filter: drop-shadow(0 0 35px var(--glow-gold));
-            transform: scale(1.1);
+
+        .logo-container img:hover {
+            filter: drop-shadow(0 0 25px var(--magic-white)) brightness(1.2);
+            transform: scale(1.02);
         }
 
-        /* Dynamic Luminous Button Glows */
-        .btn-blue-glow:hover {
-            background-color: var(--vexilla-blue);
-            box-shadow: 0 0 30px var(--glow-blue);
-            transform: translateY(-2px);
+        .parent-brand {
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            color: var(--accent);
+            text-transform: uppercase;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(0, 139, 139, 0.3);
         }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 10%;
+            background: radial-gradient(circle at 50% 50%, #001a1a 0%, #000 80%);
+        }
+
+        .hero h1 {
+            font-size: clamp(3.5rem, 9vw, 7rem);
+            font-weight: 800;
+            margin: 0;
+            letter-spacing: -3px;
+            background: linear-gradient(to bottom, #fff 50%, #666 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: var(--text-dim);
+            max-width: 800px;
+            margin: 2.5rem 0;
+        }
+
+        /* Security Feature Highlight */
+        .security-strip {
+            background: linear-gradient(90deg, transparent, var(--glass), transparent);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 3rem 0;
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .security-tag {
+            color: var(--accent);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 1rem;
+        }
+
+        /* Grid System */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            padding: 5% 10%;
+        }
+
+        .feature-card {
+            background: var(--glass);
+            padding: 3.5rem;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent);
+            background: rgba(0, 139, 139, 0.08);
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 20px rgba(0, 139, 139, 0.2);
+        }
+
+        .feature-card h3 {
+            font-size: 1.7rem;
+            margin-bottom: 1.2rem;
+            color: var(--accent);
+        }
+
+        /* Luminous Button Effects */
+        .btn-primary {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1.4rem 4rem;
+            background: #fff;
+            color: #000;
+            text-decoration: none;
+            font-weight: 800;
+            border-radius: 8px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* The Luminous Hover Glow */
+        .btn-primary:hover {
+            background: #fff;
+            color: #000;
+            box-shadow: 0 0 30px var(--magic-white), 0 0 60px rgba(255,255,255,0.4);
+            transform: scale(1.05);
+        }
+
+        .cta-section {
+            padding: 120px 10%;
+            text-align: center;
+            background: linear-gradient(180deg, #000 0%, #004444 100%);
+            border-top: 1px solid var(--accent);
+        }
+
+        .cta-section h2 { font-size: 3.5rem; margin: 0; font-weight: 800; }
         
-        .btn-gold-glow:hover {
-            background-color: var(--vexilla-gold);
-            color: black;
-            box-shadow: 0 0 30px var(--glow-gold);
-            transform: translateY(-2px);
+        .invest-btn {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 0 10px var(--accent);
         }
 
-        .glass-nav { background: rgba(1, 4, 9, 0.95); backdrop-filter: blur(25px); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
-        .glass-card { background: rgba(13, 17, 23, 0.7); border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.4s ease; }
-        .gradient-text { background: linear-gradient(135deg, #60a5fa 0%, #fbbf24 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        
-        /* Hero Animation */
-        .hero-mesh { 
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-            background: radial-gradient(circle at 50% 30%, rgba(37, 99, 235, 0.15) 0%, transparent 60%); 
-            z-index: -1; 
+        .invest-btn:hover {
+            background: #00ffff;
+            box-shadow: 0 0 40px #00ffff, 0 0 80px rgba(0, 255, 255, 0.4);
+            color: #000;
         }
 
-        .section-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); }
+        footer {
+            padding: 5rem 10%;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            border-top: 1px solid var(--border);
+            background: #000;
+        }
+
     </style>
 </head>
-<body class="antialiased selection:bg-blue-500/30">
+<body>
 
-    <nav class="fixed top-0 w-full z-[100] glass-nav py-6 px-10 flex justify-between items-center">
-        <div class="flex items-center gap-8">
-            <img src="AutopilotUI.png" alt="AutoPilot UI Logo" class="logo-main">
-            <div class="hidden xl:flex flex-col border-l border-slate-800 pl-6">
-                <span class="text-[10px] tracking-[0.4em] text-slate-500 font-bold uppercase">Solomon Records LLC Media Group</span>
-                <span class="text-xl font-black tracking-tighter text-white">Vexilla<span class="text-blue-500">AITS</span></span>
-            </div>
-        </div>
-        
-        <div class="hidden lg:flex space-x-12 text-xs font-bold tracking-[0.25em] uppercase text-slate-400">
-            <a href="#solutions" class="hover:text-white transition-colors">Solutions</a>
-            <a href="#mastery" class="hover:text-white transition-colors">The Path</a>
-            <a href="#enterprise" class="hover:text-white transition-colors">Enterprise</a>
-            <a href="#investors" class="hover:text-amber-400 transition-colors">Investor Relations</a>
-        </div>
+<nav>
+    <div class="logo-container">
+        <img src="scribeboard.png" alt="ScribeBoard Logo">
+    </div>
+    <div class="parent-brand">Powered by vexillaAITS</div>
+</nav>
 
-        <div class="flex gap-6">
-            <button class="btn-blue-glow px-8 py-3 bg-blue-600 rounded-full text-xs font-black uppercase tracking-widest transition-all duration-300">
-                Request Access
-            </button>
-        </div>
-    </nav>
+<section class="hero">
+    <h1>The End of Typing.</h1>
+    <p>ScribeBoard is the first hardware-encrypted, voice-primary interface designed to turn human thought into digital reality—without the friction of QWERTY.</p>
+    <a href="#invest" class="btn-primary">View the Whitepaper</a>
+</section>
 
-    <header class="relative pt-72 pb-40 px-6 text-center overflow-hidden">
-        <div class="hero-mesh"></div>
-        <div class="max-w-7xl mx-auto">
-            <div class="inline-block px-6 py-2 rounded-full border border-blue-500/20 bg-blue-500/5 mb-10">
-                <span class="text-[11px] font-bold tracking-[0.3em] uppercase text-blue-400">Universal Large Action Model (LAM)</span>
-            </div>
-            <h1 class="text-6xl md:text-9xl font-black mb-10 leading-[0.85] tracking-tighter">
-                Manuals into <br><span class="gradient-text italic">Motion.</span>
-            </h1>
-            <p class="text-xl md:text-3xl text-slate-400 max-w-4xl mx-auto mb-16 leading-relaxed font-light">
-                AutoPilot UI reads the documentation you don't have time for. One click. Absolute mastery. 
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-8">
-                <button class="btn-gold-glow bg-amber-400 text-black px-14 py-6 rounded-2xl font-black text-xl transition-all">
-                    HOME BASE ACCESS
-                </button>
-                <button class="glass-card px-14 py-6 rounded-2xl font-black text-xl transition-all hover:bg-white/5 border-slate-700">
-                    ENTERPRISE DEPLOY
-                </button>
-            </div>
-        </div>
-    </header>
+<div class="security-strip">
+    <div class="security-tag">Zero-Keystroke Architecture</div>
+    <p style="margin: 0.7rem 0 0 0; color: var(--text-dim); font-size: 1.1rem;">Immune to keyloggers. Invisible to acoustic hackers. Private by design.</p>
+</div>
 
-    <div class="section-divider"></div>
+<section class="features-grid">
+    <div class="feature-card">
+        <h3>Neural-Vocal Flow</h3>
+        <p>A studio-grade beamforming array eliminates background noise, allowing the AI to capture every nuance of your creative intent.</p>
+    </div>
+    <div class="feature-card">
+        <h3>Local Edge Processing</h3>
+        <p>Transcription doesn't happen in the cloud. It happens on ScribeBoard's internal NPU, ensuring your ideas never leave the hardware.</p>
+    </div>
+    <div class="feature-card">
+        <h3>Tactile AI Controls</h3>
+        <p>Physical sliders allow you to modulate the "Depth" and "Tone" of the AI assistant, giving recording-artist level control over your output.</p>
+    </div>
+</section>
 
-    <section id="mastery" class="py-32 px-6">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
-            <div class="relative">
-                <div class="absolute -top-10 -left-10 w-40 h-40 bg-blue-600/20 blur-[100px]"></div>
-                <h2 class="text-5xl md:text-7xl font-black mb-8 tracking-tighter uppercase">From Zero to <br><span class="text-blue-500">Mastery</span></h2>
-                <p class="text-slate-400 text-xl leading-relaxed mb-10">
-                    Our AI doesn't just work for you—it trains you. By demonstrating every task through "Action Clips," it builds visual muscle memory, allowing beginners to reach pro-level proficiency in days, not years.
-                </p>
-                <div class="flex gap-6">
-                    <div class="glass-card p-6 rounded-2xl flex-1">
-                        <i class="fa-solid fa-graduation-cap text-amber-400 text-2xl mb-4"></i>
-                        <h4 class="font-bold uppercase tracking-widest text-xs mb-2">Cognitive Training</h4>
-                        <p class="text-[10px] text-slate-500">Visual pathing highlights shortcuts as they occur.</p>
-                    </div>
-                    <div class="glass-card p-6 rounded-2xl flex-1">
-                        <i class="fa-solid fa-bolt text-blue-400 text-2xl mb-4"></i>
-                        <h4 class="font-bold uppercase tracking-widest text-xs mb-2">Instant ROI</h4>
-                        <p class="text-[10px] text-slate-500">Zero downtime between installation and productivity.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="glass-card rounded-[40px] aspect-square flex flex-col items-center justify-center border-white/10 p-4">
-                
-                <p class="mt-8 text-blue-400 font-mono text-[10px] uppercase tracking-[0.5em] animate-pulse">Scanning Knowledge Base...</p>
-            </div>
-        </div>
-    </section>
+<section class="cta-section" id="invest">
+    <h2>The Next Standard in Mobile Computing.</h2>
+    <p style="color: #ccc; margin-bottom: 3rem;">From standalone peripherals to the future of integrated laptop chassis.</p>
+    <a href="mailto:invest@vexillaaits.com" class="btn-primary invest-btn">Inquire for Partnership</a>
+</section>
 
-    <section id="investors" class="py-32 px-6 bg-blue-600/5 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-96 h-96 bg-amber-400/5 blur-[120px]"></div>
-        <div class="max-w-5xl mx-auto text-center relative z-10">
-            <h2 class="text-4xl font-black mb-8 uppercase italic tracking-widest">Investor Relations</h2>
-            <p class="text-slate-400 text-lg mb-12 max-w-2xl mx-auto font-medium leading-relaxed">
-                Vexilla AITS is expanding the boundaries of the Universal Action Model. We are inviting strategic capital to scale the infrastructure of autonomous software interaction.
-            </p>
-            <button class="btn-gold-glow border-2 border-amber-400 text-amber-400 px-12 py-4 rounded-full font-black uppercase tracking-[0.2em] text-sm transition-all">
-                Download Pitch Deck 2026
-            </button>
-        </div>
-    </section>
-
-    <footer class="py-24 px-10 bg-black border-t border-white/5">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-16">
-            <div class="flex flex-col gap-6">
-                <img src="AutopilotUI.png" alt="AutoPilot UI Logo" class="h-24 w-auto logo-main">
-                <p class="text-slate-600 text-[11px] font-bold uppercase tracking-[0.3em] leading-loose">
-                    Solomon Records LLC Media Group<br>
-                    Vexilla AITS Division<br>
-                    Universal Intelligence Branch
-                </p>
-            </div>
-            <div class="grid grid-cols-2 lg:grid-cols-3 gap-20">
-                <div>
-                    <h5 class="text-[10px] font-bold tracking-[0.4em] uppercase text-white mb-8">Ecosystem</h5>
-                    <ul class="space-y-4 text-xs font-bold text-slate-500 uppercase tracking-widest">
-                        <li><a href="#" class="hover:text-blue-500 transition">AutoPilot UI</a></li>
-                        <li><a href="#" class="hover:text-blue-500 transition">Vexilla Core</a></li>
-                        <li><a href="#" class="hover:text-blue-500 transition">Action Models</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="text-[10px] font-bold tracking-[0.4em] uppercase text-white mb-8">Corporate</h5>
-                    <ul class="space-y-4 text-xs font-bold text-slate-500 uppercase tracking-widest">
-                        <li><a href="#" class="hover:text-amber-400 transition">Investor Login</a></li>
-                        <li><a href="#" class="hover:text-blue-500 transition">Legal / Privacy</a></li>
-                        <li><a href="#" class="hover:text-blue-500 transition">Sourcing</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="mt-24 pt-12 border-t border-white/5 text-[9px] text-slate-800 font-bold uppercase tracking-[0.6em] text-center">
-            © 2026 Solomon Records LLC Media Group. All Rights Reserved.
-        </div>
-    </footer>
+<footer>
+    &copy; 2026 vexillaAITS. All rights reserved. | ScribeBoard is a patented Neural-Tactile Interface.
+</footer>
 
 </body>
 </html>
